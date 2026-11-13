@@ -1,0 +1,54 @@
+{
+  "xiaohei": {
+    "name": "罗小黑",
+    "sourceUrl": "https://github.com/jiang-taibai/IXiaoHei/blob/94d7eb55b85dcf10e47ad002d0417d0fb4d91436/src/org/taibai/hellohei/img/licking%20the%20claw.gif",
+    "credit": "《罗小黑战记》角色；网络素材收录：IXiaoHei",
+    "portrait": "assets/characters/xiaohei-portrait.png",
+    "sprites": {
+      "idle": "assets/characters/xiaohei-idle.png",
+      "charge": "assets/characters/xiaohei-charge.png",
+      "jump": "assets/characters/xiaohei-jump.png",
+      "fall": "assets/characters/xiaohei-fall.png"
+    },
+    "processing": "原图裁剪/透明处理；蓄力、跳跃、下落差分由缩放和旋转制作，并非官方动作原画。"
+  },
+  "heixiu": {
+    "name": "嘿咻",
+    "sourceUrl": "https://github.com/jiang-taibai/IXiaoHei/blob/94d7eb55b85dcf10e47ad002d0417d0fb4d91436/src/org/taibai/hellohei/img/play%20heixiu.gif",
+    "credit": "《罗小黑战记》角色；网络素材收录：IXiaoHei",
+    "portrait": "assets/characters/heixiu-portrait.png",
+    "sprites": {
+      "idle": "assets/characters/heixiu-idle.png",
+      "charge": "assets/characters/heixiu-charge.png",
+      "jump": "assets/characters/heixiu-jump.png",
+      "fall": "assets/characters/heixiu-fall.png"
+    },
+    "processing": "原图裁剪/透明处理；蓄力、跳跃、下落差分由缩放和旋转制作，并非官方动作原画。"
+  },
+  "wuxian": {
+    "name": "无限",
+    "sourceUrl": "https://github.com/Hakuin123/2048LXH/blob/20e465f85a525ed283a51579b5c6174f3abca127/src/img/512.jpg",
+    "credit": "《罗小黑战记》角色；网络素材收录：2048LXH",
+    "portrait": "assets/characters/wuxian-portrait.png",
+    "sprites": {
+      "idle": "assets/characters/wuxian-idle.png",
+      "charge": "assets/characters/wuxian-charge.png",
+      "jump": "assets/characters/wuxian-jump.png",
+      "fall": "assets/characters/wuxian-fall.png"
+    },
+    "processing": "原图裁剪/透明处理；蓄力、跳跃、下落差分由缩放和旋转制作，并非官方动作原画。"
+  },
+  "shanxin": {
+    "name": "山新",
+    "sourceUrl": "https://github.com/Hakuin123/2048LXH/blob/20e465f85a525ed283a51579b5c6174f3abca127/src/img/64.jpg",
+    "credit": "《罗小黑战记》角色；网络素材收录：2048LXH",
+    "portrait": "assets/characters/shanxin-portrait.png",
+    "sprites": {
+      "idle": "assets/characters/shanxin-idle.png",
+      "charge": "assets/characters/shanxin-charge.png",
+      "jump": "assets/characters/shanxin-jump.png",
+      "fall": "assets/characters/shanxin-fall.png"
+    },
+    "processing": "原图裁剪/透明处理；蓄力、跳跃、下落差分由缩放和旋转制作，并非官方动作原画。"
+  }
+}
