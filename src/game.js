@@ -209,7 +209,7 @@ export class ForestGame {
     const last = this.platforms[this.platforms.length - 1];
     c.save(); c.globalAlpha = .18; this.drawIsland(c, { ...last, x: last.x + 133, y: last.y - 78, width: 88, depth: 44, id: last.id + 1 }, camera); c.restore();
     const drawables = this.platforms.map(p => ({ y: p.y, type: 'platform', p }));
-    drawables.push({ y: this.player.y + (this.state === 'falling' ? -1 : 1), type: 'player' });
+    drawables.push({ y: this.state === 'falling' ? this.player.y - 1 : this.current.y + 1, type: 'player' });
     drawables.sort((a, b) => a.y - b.y);
     for (const item of drawables) {
       if (item.type === 'platform') {

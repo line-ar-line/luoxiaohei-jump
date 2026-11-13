@@ -35,6 +35,7 @@ async function mouseJump(page, duration) {
     const options = { headless: true };
     if (process.env.BROWSER_EXECUTABLE) options.executablePath = process.env.BROWSER_EXECUTABLE;
     browser = await chromium.launch(options);
+    await fs.mkdir(path.join(root, 'test-results'), { recursive: true });
     const context = await browser.newContext({ viewport: { width: 1440, height: 1100 } });
     const page = await context.newPage(); observe(page);
     await page.goto(origin + '/forest-preview/'); await ready(page);
@@ -57,6 +58,17 @@ async function mouseJump(page, duration) {
     }
     const best = (await debug(page)).score;
     assert.equal(await page.locator('#best').innerText(), String(best).padStart(2, '0'));
+
+    // An edge landing earns one point, and the next jump starts at that edge.
+    await page.locator('#restart').click();
+    await mouseJump(page, (await debug(page)).perfectHoldMs + 95);
+    await ready(page);
+    assert.equal((await debug(page)).score, 1);
+    assert.equal((await debug(page)).combo, 0);
+    await mouseJump(page, (await debug(page)).perfectHoldMs - 4);
+    await ready(page);
+    assert.equal((await debug(page)).score, 3);
+    await page.locator('#restart').click();
     await page.reload(); await ready(page);
     assert.equal((await debug(page)).score, 0);
     assert.equal(await page.locator('#best').innerText(), String(best).padStart(2, '0'));
@@ -137,14 +149,14 @@ async function mouseJump(page, duration) {
     await cdp.send('Input.dispatchTouchEvent', { type: 'touchCancel', touchPoints: [] });
     assert.equal((await debug(mobile)).state, 'ready');
     await mobile.locator('#restart').tap();
-    await mobile.screenshot({ path: path.join(root, 'preview-mobile.png'), fullPage: true });
+    await mobile.screenshot({ path: path.join(root, 'test-results/mobile.png'), fullPage: true });
     for (const width of [320, 390, 768, 1024, 1440]) {
       await page.setViewportSize({ width, height: 1000 });
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, `No horizontal overflow at ${width}px`);
     }
     await page.locator('[data-character="xiaohei"]').click(); await ready(page);
     await page.locator('#restart').click();
-    await page.screenshot({ path: path.join(root, 'preview-desktop.png'), fullPage: true });
+    await page.screenshot({ path: path.join(root, 'test-results/desktop.png'), fullPage: true });
     assert.deepEqual(errors, []); assert.deepEqual(failures, []);
     console.log('PASS: game loading under a Pages subpath, 6-jump combo, no score farming, persistence, keyboard, cancellation, paused help, credits, settings, 4 characters, game over/retry, rapid switching, touch, multi-touch and 5 responsive widths.');
   } finally { if (browser) await browser.close(); server.close(); }
